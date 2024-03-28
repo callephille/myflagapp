@@ -1,0 +1,49 @@
+
+.country-list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%; /* Ensure the container takes the full width */
+    padding-top: 30px;
+    background-color: #f0f0f0;
+  }
+  
+  .country-item {
+    background-color: white;
+    border-radius: 8px;
+    width: 250px;
+    box-sizing: border-box; /* Include padding in the width calculation */
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    
+}
+  
+  .country-flag {
+    width: 100%; /* Adjust the width as needed */
+    height: auto;
+    max-width: 300px;
+    min-height: 150px;
+    max-height: 150px;
+    border-radius: 8px 8px 0 0; 
+  }
+  
+  .country-details {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  .country-details h3 {
+    margin: 0;
+    font-size: 18px;
+    color: black;
+  }
+  
+  .country-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: black;
+  }
+  

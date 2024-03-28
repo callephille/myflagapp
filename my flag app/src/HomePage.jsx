@@ -1,6 +1,6 @@
-// HomePage.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './HomePage.css';
 
 function HomePage() {
   const [countries, setCountries] = useState([]);
@@ -24,11 +24,19 @@ function HomePage() {
 
   return (
     <div>
-      <h2>Featured Countries</h2>
+      
       <div className="country-list">
         {countries.map(country => (
-          <div key={country.cca2}>
-            <Link to={`/country/${country.cca2}`}>{country.name.common}</Link>
+          <div key={country.cca2} className="country-item">
+            <Link to={`/country/${country.cca2}`}>
+              <img src={country.flags.png} alt={country.name.common} className="country-flag" />
+              <div className="country-details">
+                <h3>{country.name.common}</h3>
+                <p>Population: {country.population}</p>
+                <p>Region: {country.region}</p>
+                <p>Capital: {country.capital}</p>
+              </div>
+            </Link>
           </div>
         ))}
       </div>
@@ -37,5 +45,7 @@ function HomePage() {
 }
 
 export default HomePage;
+
+
 
 
