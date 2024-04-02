@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
-
+import Dropdown from './Dropdown'
 function HomePage() {
   const [countries, setCountries] = useState([]);
 
@@ -23,8 +23,8 @@ function HomePage() {
   }, []);
 
   return (
-    <div>
-      
+    <div className='homepage-container'>
+      <Dropdown />
       <div className="country-list">
         {countries.map(country => (
           <div key={country.cca2} className="country-item">

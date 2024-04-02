@@ -1,11 +1,13 @@
+.homepage-container {
+  margin-top: 60px;
+}
 
 .country-list {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 20px;
-    width: 100%; /* Ensure the container takes the full width */
-    padding-top: 30px;
+    width: 100%;
     background-color: #f0f0f0;
   }
   
