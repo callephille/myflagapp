@@ -17,9 +17,9 @@
   }
 
   .container-nav {
-    position: absolute;
+    /* position: absolute;
     top: 0;
-    left: 0;
+    left: 0; */
     width: 100%;
     height: 60px;
     background-color: white;

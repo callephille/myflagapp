@@ -31,39 +31,41 @@ function CountryPage() {
   }, [countryCode]);
 
   return (
-    <div className='body-container'>
+    <div>
       {countryData ? (
-        <div> 
+        <div className='container'> 
           <div className='img-wrapper'>
           <Link to="/"><div className='backtohome'><img src={darkarrow} alt="backtohome" /><p>Back</p> </div> </Link>
-              <img src={countryData.flags.png} alt={countryData.name.common} />
+              <img className='flag-img' src={countryData.flags.png} alt={countryData.name.common} />
           </div>
-          <div>  
-            <h2>{countryData.name.common}</h2>
-            <p>Population: {countryData.population}</p>
-            <p>Region: {countryData.region}</p>
-            <p>Capital: {countryData.capital}</p>
-            <p>Native Name: {countryData.name.nativeName[Object.keys(countryData.name.nativeName)[0]].common}</p>
-            <p>Top Level Domain: {countryData.tld[Object.keys(countryData.tld)[0]]}</p>
-            <p>Currency: {Object.keys(countryData.currencies)[0]}</p>
-            <p>Languages: {Object.values(countryData.languages).join(', ')}</p>
-          </div> 
-          <div>
-          <p>Borders:</p>
-          <div>
-              {countryData.borders.map((border, index) => {
-                const selectedCountry = allCountries.find(country => country.cca3 === border);
-                const newUrl = selectedCountry ? `/country/${selectedCountry.cca2}` : `/country/${border}`;
-                return (
-                  <React.Fragment key={border}>
-                    <Link to={newUrl}>
-                      {selectedCountry ? selectedCountry.name.common : border}
-                    </Link>
-                    {index < countryData.borders.length - 1 && ', '}
-                  </React.Fragment>
-                );
-              })}
-            </div>
+          <div className='body-container'>
+              <div className='info'>  
+                <h2>{countryData.name.common}</h2>
+                <p>Population: {countryData.population}</p>
+                <p>Region: {countryData.region}</p>
+                <p>Capital: {countryData.capital}</p>
+                <p>Native Name: {countryData.name.nativeName[Object.keys(countryData.name.nativeName)[0]].common}</p>
+                <p>Top Level Domain: {countryData.tld[Object.keys(countryData.tld)[0]]}</p>
+                <p>Currency: {Object.keys(countryData.currencies)[0]}</p>
+                <p>Languages: {Object.values(countryData.languages).join(', ')}</p>
+              </div> 
+              <div>
+              <p>Borders:</p>
+              <div>
+                  {countryData.borders.map((border, index) => {
+                    const selectedCountry = allCountries.find(country => country.cca3 === border);
+                    const newUrl = selectedCountry ? `/country/${selectedCountry.cca2}` : `/country/${border}`;
+                    return (
+                      <React.Fragment key={border}>
+                        <Link to={newUrl}>
+                          {selectedCountry ? selectedCountry.name.common : border}
+                        </Link>
+                        {index < countryData.borders.length - 1 && ', '}
+                      </React.Fragment>
+                    );
+                  })}
+                </div>
+              </div>
           </div>
         </div>
       ) : (
