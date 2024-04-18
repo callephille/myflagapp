@@ -1,6 +1,8 @@
 // CountryPage.js
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import darkarrow from './assets/arrow-left-dark.svg';
+import './CountryPage.css';
 
 function CountryPage() {
   const { countryCode } = useParams();
@@ -29,10 +31,13 @@ function CountryPage() {
   }, [countryCode]);
 
   return (
-    <div>
+    <div className='body-container'>
       {countryData ? (
         <div> 
-          <img src={countryData.flags.png} alt={countryData.name.common} />
+          <div className='img-wrapper'>
+          <Link to="/"><div className='backtohome'><img src={darkarrow} alt="backtohome" /><p>Back</p> </div> </Link>
+              <img src={countryData.flags.png} alt={countryData.name.common} />
+          </div>
           <div>  
             <h2>{countryData.name.common}</h2>
             <p>Population: {countryData.population}</p>
@@ -44,18 +49,22 @@ function CountryPage() {
             <p>Languages: {Object.values(countryData.languages).join(', ')}</p>
           </div> 
           <div>
-  <p>Borders:</p>
-  <div>
-    {countryData.borders.map((border, index) => (
-      <React.Fragment key={border}>
-        <Link to={`/country/${border}`}>
-          {allCountries.find(country => country.cca2 === border) ? allCountries.find(country => country.cca2 === border).name.common : border}
-        </Link>
-        {index < countryData.borders.length - 1 && ', '}
-      </React.Fragment>
-    ))}
-  </div>
-</div>
+          <p>Borders:</p>
+          <div>
+              {countryData.borders.map((border, index) => {
+                const selectedCountry = allCountries.find(country => country.cca3 === border);
+                const newUrl = selectedCountry ? `/country/${selectedCountry.cca2}` : `/country/${border}`;
+                return (
+                  <React.Fragment key={border}>
+                    <Link to={newUrl}>
+                      {selectedCountry ? selectedCountry.name.common : border}
+                    </Link>
+                    {index < countryData.borders.length - 1 && ', '}
+                  </React.Fragment>
+                );
+              })}
+            </div>
+          </div>
         </div>
       ) : (
         <p>Loading...</p>

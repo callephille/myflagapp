@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
-import Dropdown from './Dropdown'
+import Dropdown from './Dropdown';
+
 function HomePage() {
   const [countries, setCountries] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,6 +16,7 @@ function HomePage() {
         }
         const data = await response.json();
         setCountries(data);
+        setFilteredCountries(data); // Initialize filteredCountries with all countries
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -22,11 +25,27 @@ function HomePage() {
     fetchData();
   }, []);
 
+  const handleRegionChange = region => {
+    if (region === '') {
+      setFilteredCountries(countries); // Reset filter
+    } else {
+      const filtered = countries.filter(country => country.region === region);
+      setFilteredCountries(filtered);
+    }
+  };
+
+  const handleSearchChange = searchTerm => {
+    const filtered = countries.filter(country =>
+      country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredCountries(filtered);
+  };
+
   return (
     <div className='homepage-container'>
-      <Dropdown />
+      <Dropdown onRegionChange={handleRegionChange} onSearchChange={handleSearchChange} />
       <div className="country-list">
-        {countries.map(country => (
+        {filteredCountries.map(country => (
           <div key={country.cca2} className="country-item">
             <Link to={`/country/${country.cca2}`}>
               <img src={country.flags.png} alt={country.name.common} className="country-flag" />
@@ -45,6 +64,9 @@ function HomePage() {
 }
 
 export default HomePage;
+
+
+
 
 
 

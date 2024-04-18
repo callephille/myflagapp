@@ -9,7 +9,7 @@ import moon from './assets/moon-bordered.svg';
 function App() {
   return (
     <Router>
-      <div>
+      <div className="app-container">
         <Navbar logo={logo}  moon={moon} />       
         <Routes> {/* Use Routes instead of Route */}
           <Route path="/" element={<HomePage />} /> {/* Use element prop to specify component */}

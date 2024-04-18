@@ -1,5 +1,8 @@
 .homepage-container {
   margin-top: 60px;
+  height: 100vh;
+  width: 100vw;
+  
 }
 
 .country-list {
@@ -41,11 +44,13 @@
     margin: 0;
     font-size: 18px;
     color: black;
+   
   }
   
   .country-details p {
     margin: 5px 0;
     font-size: 14px;
     color: black;
+    
   }
   
