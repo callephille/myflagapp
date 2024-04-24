@@ -35,37 +35,42 @@ function CountryPage() {
       {countryData ? (
         <div className='container'> 
           <div className='img-wrapper'>
-          <Link to="/"><div className='backtohome'><img src={darkarrow} alt="backtohome" /><p>Back</p> </div> </Link>
-              <img className='flag-img' src={countryData.flags.png} alt={countryData.name.common} />
+            <Link to="/"><div className='backtohome'><img src={darkarrow} alt="backtohome" /><p>Back</p> </div> </Link>
+            <img className='flag-img' src={countryData.flags.png} alt={countryData.name.common} />
           </div>
           <div className='body-container'>
-              <div className='info'>  
-                <h2>{countryData.name.common}</h2>
-                <p>Population: {countryData.population}</p>
-                <p>Region: {countryData.region}</p>
-                <p>Capital: {countryData.capital}</p>
-                <p>Native Name: {countryData.name.nativeName[Object.keys(countryData.name.nativeName)[0]].common}</p>
-                <p>Top Level Domain: {countryData.tld[Object.keys(countryData.tld)[0]]}</p>
-                <p>Currency: {Object.keys(countryData.currencies)[0]}</p>
-                <p>Languages: {Object.values(countryData.languages).join(', ')}</p>
-              </div> 
-              <div>
-              <p>Borders:</p>
-              <div>
+            <div className='info'>  
+              <div className='info-1'>
+                <h1>{countryData.name.common}</h1>
+                <p><span className="static-text">Population:</span> <span className="dynamic-content">{countryData.population}</span></p>
+                <p><span className="static-text">Region:</span> <span className="dynamic-content">{countryData.region}</span></p>
+                <p><span className="static-text">Capital:</span> <span className="dynamic-content">{countryData.capital}</span></p>
+                <p><span className="static-text">Native Name:</span> <span className="dynamic-content">{countryData.name.nativeName[Object.keys(countryData.name.nativeName)[0]].common}</span></p>
+              </div>
+              <div className='info-2'>
+                <p><span className="static-text">Top Level Domain:</span> <span className="dynamic-content">{countryData.tld[Object.keys(countryData.tld)[0]]}</span></p>
+                <p><span className="static-text">Currency:</span> <span className="dynamic-content">{Object.keys(countryData.currencies)[0]}</span></p>
+                <p><span className="static-text">Languages:</span> <span className="dynamic-content">{Object.values(countryData.languages).join(', ')}</span></p>
+              </div>
+
+              <div className='borders-container'>
+                <p className='borders-title'>Borders Countries:</p>
+                <div className='borders-list'>
                   {countryData.borders.map((border, index) => {
                     const selectedCountry = allCountries.find(country => country.cca3 === border);
                     const newUrl = selectedCountry ? `/country/${selectedCountry.cca2}` : `/country/${border}`;
                     return (
                       <React.Fragment key={border}>
-                        <Link to={newUrl}>
+                        <Link to={newUrl} className='border-link'>
                           {selectedCountry ? selectedCountry.name.common : border}
                         </Link>
-                        {index < countryData.borders.length - 1 && ', '}
+                        {index < countryData.borders.length - 1 && ''}
                       </React.Fragment>
                     );
                   })}
                 </div>
               </div>
+            </div>
           </div>
         </div>
       ) : (
@@ -74,5 +79,6 @@ function CountryPage() {
     </div>
   );
 }
+
 
 export default CountryPage;
