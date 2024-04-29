@@ -6,6 +6,7 @@ import Dropdown from './Dropdown';
 function HomePage() {
   const [countries, setCountries] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState([]);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,8 +42,9 @@ function HomePage() {
     setFilteredCountries(filtered);
   };
 
+
   return (
-    <div className='homepage-container'>
+    <div className={`homepage-container ${darkMode ? 'dark' : ''}`}>
       <Dropdown onRegionChange={handleRegionChange} onSearchChange={handleSearchChange} />
       <div className="country-list">
         {filteredCountries.map(country => (
@@ -64,6 +66,7 @@ function HomePage() {
 }
 
 export default HomePage;
+
 
 
 

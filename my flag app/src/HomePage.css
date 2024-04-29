@@ -4,10 +4,14 @@
   width: 100vw;
   
 }
-
+.dark .homepage-container {
+  background-color: #202C36;/* Dark gray background color */
+  color: #fff; /* Text color for dark mode */
+}
 .country-list {
     display: flex;
     justify-content: space-between;
+    align-content: center;
     flex-wrap: wrap;
     width: 1310px;
     background-color: #f0f0f0;
@@ -16,6 +20,9 @@
     left: 55px;
     padding: 10px;
     
+  }
+  .dark .country-list{
+    background-color: #202C36;
   }
   
   .country-item {
@@ -27,8 +34,10 @@
     display: flex;
     flex-direction: column;
     margin: 25px;
+  }
+  .dark .country-item{
+    background-color: #2b3844;
     
-
   }
   
   .country-flag {
@@ -44,14 +53,18 @@
     margin-top: 10px;
     margin-left: 10px;
   }
-  
+  .dark .country-details h3 {
+    color: white;
+  }
   .country-details h3 {
     margin: 0;
     font-size: 18px;
     color: black;
    
   }
-  
+  .dark .country-details p {
+    color: white;
+  }
   .country-details p {
     margin: 5px 0;
     font-size: 14px;

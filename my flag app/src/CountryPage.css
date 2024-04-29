@@ -27,6 +27,9 @@ gap: 10px;
 font-size: 18px;
 color: #000;
 }
+.dark .backtohome{
+  color: white;
+}
 .body-container{
   position: relative;
   left: 200px;
@@ -41,10 +44,16 @@ color: #000;
 h1{
   font-size: 38px;
 }
+.dark h1{
+  color: white;
+}
 .info{
   display: flex;
   align-items: center;
   gap: 0px;
+}
+.dark .info{
+  color: white;
 }
 .info-1 {
   display: flex;
@@ -87,10 +96,14 @@ h1{
   background-color: white;
   border-radius: 5px;
   height: 20px;
-  padding: 2px;
+  padding: 4px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   font-weight:400;
   /* border: 1px solid red; */
+}
+.dark .border-link{
+  background-color: #2b3844;
+  color: white;
 }
 
 .static-text {

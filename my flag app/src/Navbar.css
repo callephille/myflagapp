@@ -22,7 +22,11 @@
     background-color: white;
     
   }
-
+  
+  .dark .navbar{
+  color: white;
+  background-color: #2b3844;
+ }
   .navbar {
     display: flex;
     align-items: center;

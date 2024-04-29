@@ -1,13 +1,16 @@
 // CountryPage.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { ThemeContext } from './ThemeContext';
 import darkarrow from './assets/arrow-left-dark.svg';
+import lightarrow from './assets/arrow-left.svg';
 import './CountryPage.css';
 
 function CountryPage() {
   const { countryCode } = useParams();
   const [countryData, setCountryData] = useState(null);
   const [allCountries, setAllCountries] = useState([]);
+  const { darkmode } = useContext(ThemeContext); // Använda darkmode från context
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,13 +36,23 @@ function CountryPage() {
   return (
     <div>
       {countryData ? (
-        <div className='container'> 
+        <div className='container'>
           <div className='img-wrapper'>
-            <Link to="/"><div className='backtohome'><img src={darkarrow} alt="backtohome" /><p>Back</p> </div> </Link>
+          <Link to="/">
+           <div className='backtohome'>
+           {console.log("Current dark mode value:", darkmode)}
+            {darkmode ? (
+            <img src={lightarrow} alt="lightarrowhome" />
+            ) : (
+            <img src={darkarrow} alt="darkarrowhome" />
+            )}
+           <p>Back</p>
+           </div>
+          </Link>
             <img className='flag-img' src={countryData.flags.png} alt={countryData.name.common} />
           </div>
           <div className='body-container'>
-            <div className='info'>  
+            <div className='info'>
               <div className='info-1'>
                 <h1>{countryData.name.common}</h1>
                 <p><span className="static-text">Population:</span> <span className="dynamic-content">{countryData.population}</span></p>
@@ -79,6 +92,5 @@ function CountryPage() {
     </div>
   );
 }
-
 
 export default CountryPage;
