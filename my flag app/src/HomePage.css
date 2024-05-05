@@ -1,8 +1,8 @@
 
-body{
-  overflow-x: hidden;
-
+body::-webkit-scrollbar{
+  display:none;
 }
+
 .homepage-container {
   margin-top: 20px;
   height: 100vh;
