@@ -2,6 +2,9 @@
   margin-top: 20px;
   height: 100vh;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   
 }
 .dark .homepage-container {
@@ -15,12 +18,9 @@
     flex-wrap: wrap;
     width: 1310px;
     background-color: #f0f0f0;
-    position: relative;
-    top: 0px;
-    left: 55px;
     padding: 10px;
-    
   }
+
   .dark .country-list{
     background-color: #202C36;
   }
@@ -71,4 +71,57 @@
     color: black;
     
   }
+
+  .country-item-placeholder {
+    background-color: white; /* Samma bakgrundsfärg som länderna */
+    border-radius: 8px;
+    width: 250px;
+    box-sizing: border-box;
+    height: 300px;
+    margin: 25px;
+  }
   
+  .country-flag-placeholder {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    min-height: 150px;
+    max-height: 150px;
+    border-radius: 8px 8px 0 0; 
+  }
+  
+  .country-details-placeholder {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  .country-details-placeholder h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .country-details-placeholder p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  
+  
+  @media only screen and (max-width: 375px) {
+    .country-list {
+      width: 375px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 0px;
+    }
+    .country-item{
+      border-radius: 5px;
+      
+      
+    }
+    .country-flag {
+      border-radius: 5px;
+      max-height: 180px;
+    }
+  }

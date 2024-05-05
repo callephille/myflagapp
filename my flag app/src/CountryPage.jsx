@@ -1,4 +1,3 @@
-// CountryPage.js
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ThemeContext } from './ThemeContext';
@@ -10,6 +9,7 @@ function CountryPage() {
   const { countryCode } = useParams();
   const [countryData, setCountryData] = useState(null);
   const [allCountries, setAllCountries] = useState([]);
+  const [loading, setLoading] = useState(true); // För att hantera laddningstillstånd
   const { darkmode } = useContext(ThemeContext); // Använda darkmode från context
 
   useEffect(() => {
@@ -24,7 +24,11 @@ function CountryPage() {
         setAllCountries(data);
         const country = data.find(country => country.cca2 === countryCode);
         console.log('Country:', country);
-        setCountryData(country);
+        // Simulera en laddningstid på 2 sekunder
+        setTimeout(() => {
+          setCountryData(country);
+          setLoading(false); // Markera att laddningen är klar
+        }, 2000);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -35,20 +39,52 @@ function CountryPage() {
 
   return (
     <div>
-      {countryData ? (
+      {loading ? ( // Kontrollera om datan laddas fortfarande
         <div className='container'>
           <div className='img-wrapper'>
-          <Link to="/">
-           <div className='backtohome'>
-           {console.log("Current dark mode value:", darkmode)}
-            {darkmode ? (
-            <img src={lightarrow} alt="lightarrowhome" />
-            ) : (
-            <img src={darkarrow} alt="darkarrowhome" />
-            )}
-           <p>Back</p>
-           </div>
-          </Link>
+            <div className='backtohome'>
+              {darkmode ? (
+                <img src={lightarrow} alt="lightarrowhome" />
+              ) : (
+                <img src={darkarrow} alt="darkarrowhome" />
+              )}
+              <p>Back</p>
+            </div>
+            <div className='flag-img-placeholder'></div> {/* Placeholder för flaggan */}
+          </div>
+          <div className='body-container'>
+            <div className='info-1'>
+              <h1>Loading...</h1> {/* Placeholder för textinnehåll */}
+            </div>
+            <div className='info-2'>
+              <p>Loading...</p> {/* Placeholder för textinnehåll */}
+              <p>Loading...</p> {/* Placeholder för textinnehåll */}
+              <p>Loading...</p> {/* Placeholder för textinnehåll */}
+            </div>
+            <div className='borders-container'>
+              <p className='borders-title'>Borders Countries:</p>
+              <div className='borders-list'>
+                {/* Placeholder för länkar */}
+                <div className='border-link-placeholder'></div>
+                <div className='border-link-placeholder'></div>
+                <div className='border-link-placeholder'></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className='container'>
+          <div className='img-wrapper'>
+            <Link to="/">
+              <div className='backtohome'>
+                {darkmode ? (
+                  <img src={lightarrow} alt="lightarrowhome" />
+                ) : (
+                  <img src={darkarrow} alt="darkarrowhome" />
+                )}
+                <p>Back</p>
+              </div>
+            </Link>
             <img className='flag-img' src={countryData.flags.png} alt={countryData.name.common} />
           </div>
           <div className='body-container'>
@@ -86,8 +122,6 @@ function CountryPage() {
             </div>
           </div>
         </div>
-      ) : (
-        <p>Loading...</p>
       )}
     </div>
   );

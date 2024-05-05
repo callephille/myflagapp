@@ -29,7 +29,7 @@ const Dropdown = ({ onRegionChange, onSearchChange }) => {
         value={selectedRegion}
         onChange={handleChange}
       >
-        <option value="">All Regions</option>
+        <option value="">Filter by Region</option>
         <option value="Africa">Africa</option>
         <option value="Americas">America</option>
         <option value="Asia">Asia</option>

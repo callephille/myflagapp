@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from './ThemeContext';
 import './HomePage.css';
 import Dropdown from './Dropdown';
 
 function HomePage() {
   const [countries, setCountries] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState([]);
-  const [darkMode, setDarkMode] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const { darkMode } = useContext(ThemeContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,7 +19,8 @@ function HomePage() {
         }
         const data = await response.json();
         setCountries(data);
-        setFilteredCountries(data); // Initialize filteredCountries with all countries
+        setFilteredCountries(data);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -42,30 +45,48 @@ function HomePage() {
     setFilteredCountries(filtered);
   };
 
-
   return (
     <div className={`homepage-container ${darkMode ? 'dark' : ''}`}>
-      <Dropdown onRegionChange={handleRegionChange} onSearchChange={handleSearchChange} />
-      <div className="country-list">
-        {filteredCountries.map(country => (
-          <div key={country.cca2} className="country-item">
-            <Link to={`/country/${country.cca2}`}>
-              <img src={country.flags.png} alt={country.name.common} className="country-flag" />
-              <div className="country-details">
-                <h3>{country.name.common}</h3>
-                <p>Population: {country.population}</p>
-                <p>Region: {country.region}</p>
-                <p>Capital: {country.capital}</p>
+      {loading ? (
+        <div className="country-list">
+          {[...Array(10)].map((_, index) => (
+            <div key={index} className="country-item-placeholder">
+              <div className="country-flag-placeholder"></div>
+              <div className="country-details-placeholder">
+                <h3>Loading...</h3>
+                <p>Loading...</p>
+                <p>Loading...</p>
+                <p>Loading...</p>
               </div>
-            </Link>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <>
+          <Dropdown onRegionChange={handleRegionChange} onSearchChange={handleSearchChange} />
+          <div className="country-list">
+            {filteredCountries.map(country => (
+              <div key={country.cca2} className="country-item">
+                <Link to={`/country/${country.cca2}`}>
+                  <img src={country.flags.png} alt={country.name.common} className="country-flag" />
+                  <div className="country-details">
+                    <h3>{country.name.common}</h3>
+                    <p>Population: {country.population}</p>
+                    <p>Region: {country.region}</p>
+                    <p>Capital: {country.capital}</p>
+                  </div>
+                </Link>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      )}
     </div>
   );
 }
 
 export default HomePage;
+
 
 
 

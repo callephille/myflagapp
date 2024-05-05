@@ -1,4 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+*{ 
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+      margin: 0;
+      padding: 0;
+  }
+  
 a {
   text-decoration: inherit;
 }
@@ -9,4 +21,9 @@ body {
 }
 .dark body{
   background-color: #202c36
+}
+
+@media only screen and (max-width: 375px){
+
+
 }

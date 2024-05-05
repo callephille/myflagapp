@@ -15,9 +15,9 @@ function Navbar() {
    <div className={`container-nav ${darkmode ? 'dark' : ''}`}>
      <nav className='navbar'>
        <p className='title'>The Flag App</p>
-       <img src={darkmode ? logovit : logosvart} alt="techover-logo" />
+       <img className='logo' src={darkmode ? logovit : logosvart} alt="techover-logo" />
        <div className='darkmode' onClick={toggleDarkMode}>
-         <img src={darkmode ? lightMoonIcon : darkMoonIcon} alt="Dark mode toggle" />
+         <img  src={darkmode ? lightMoonIcon : darkMoonIcon} alt="Dark mode toggle" />
          <p>{darkmode ? 'Light Mode' : 'Dark Mode'}</p>
        </div>
      </nav>

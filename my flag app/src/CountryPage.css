@@ -1,8 +1,10 @@
 .container{
-  height: 100vh;
+  height: 600px;
   width: 100vw;
   display: flex;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+ 
 }
 .flag-img{
   height: 350px;
@@ -112,4 +114,50 @@ h1{
 
 .dynamic-content {
   font-weight: 400; /* or any other desired style */
+}
+
+
+@media only screen and (max-width: 375px){
+  .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 375px;
+  }
+  .img-wrapper{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    left: 0px;
+    top:25px;
+    width: 330px;
+    height: 350px;
+
+    
+  }
+  .borders-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .body-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    left: 0; /* Reset left position */
+    top: 0; /* Reset top position */
+    width: 100%; /* Occupy full width */
+  }
+  
+  .flag-img{
+    height: 220px;
+    width: 320px;
+  }
+  .info{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  }
 }
