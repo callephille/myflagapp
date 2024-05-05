@@ -28,7 +28,7 @@ function CountryPage() {
         setTimeout(() => {
           setCountryData(country);
           setLoading(false); // Markera att laddningen är klar
-        }, 2000);
+        }, );// sett ms här för att se loading state tydligare
       } catch (error) {
         console.error('Error fetching data:', error);
       }
