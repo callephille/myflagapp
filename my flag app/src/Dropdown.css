@@ -28,12 +28,13 @@
 }
 
 .dark input::placeholder {
-  color: #cfcece; /* Färg på platshållartexten */
-  font-style: Open Sans; /* Kursiv stil för platshållartexten */
+  color: rgba(255, 255, 255, 0.795); /* Färg på platshållartexten */
+
 }
 
 .dark .search {
   background-color: #2b3844;
+  color: white;
 }
 
 .input-container {
