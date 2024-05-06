@@ -94,6 +94,7 @@ h1{
 
 .border-link {
   margin-right: 10px; /* Adjust as needed */
+  margin-bottom: 5px;
   color: #000;
   background-color: white;
   border-radius: 5px;
@@ -143,6 +144,12 @@ h1{
     flex-direction: column;
     position: relative;
     top: 20px;
+    max-width: 300px;
+    
+  }
+  .borders-list{
+    max-width: 300px;
+    margin-bottom: 30px;
   }
   .body-container {
     display: flex;
