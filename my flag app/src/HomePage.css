@@ -21,7 +21,7 @@ body::-webkit-scrollbar{
     justify-content: space-between;
     align-content: center;
     flex-wrap: wrap;
-    width: 1310px;
+    width: 90%;
     background-color: #f0f0f0;
     padding: 10px;
   }

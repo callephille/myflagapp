@@ -13,6 +13,7 @@ function Navbar() {
 
   return (
    <div className={`container-nav ${darkmode ? 'dark' : ''}`}>
+    
      <nav className='navbar'>
        <p className='title'>The Flag App</p>
        <img className='logo' src={darkmode ? logovit : logosvart} alt="techover-logo" />
