@@ -64,6 +64,7 @@
   .search {
     width: 320px;
     height: 55px; /* You should be able to control the height here */
+    margin-left: 0px;
   }
   .regions{
     

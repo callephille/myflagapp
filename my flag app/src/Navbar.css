@@ -54,7 +54,8 @@
         gap: 10px;
         display: flex;
         justify-content: space-between;
-        
+        margin: 0px;
+        padding: 0px;
       }
 
       .logo{
