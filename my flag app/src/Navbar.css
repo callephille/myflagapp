@@ -42,6 +42,13 @@
    .dark .container-nav{
     background-color:#2b3844 ;
    }
+
+   @media only screen and (max-width: 1000px){
+    .logo{
+      display: none;
+    }
+    
+   }
     @media only screen and (max-width: 375px) {
       .container-nav{
         height: 80px;
@@ -51,6 +58,7 @@
       }
       .navbar{
         max-width: 375px;
+        width: 375px;
         gap: 10px;
         display: flex;
         justify-content: space-between;
@@ -62,12 +70,13 @@
         display: none;
       }
       .title{
-        font-size: 18px;
+        
         margin: 10px;
       }
       .darkmode{
-        font-size: 18px;
+       
         margin: 10px;
+        
       }
       .darkmode img {
         height:  28px;

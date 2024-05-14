@@ -131,7 +131,60 @@ h1{
       
   }
 }
+@media only screen and (max-width: 600px){
+  .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 375px;
+    position: relative;
+    top: 60px;
+  }
+  .img-wrapper{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    left: 0px;
+    top:35px;
+    width: 330px;
+    height: 350px;
 
+    
+  }
+  .borders-container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 20px;
+    max-width: 300px;
+    
+  }
+  .borders-list{
+    max-width: 300px;
+    margin-bottom: 30px;
+  }
+  .body-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    left: 0; /* Reset left position */
+    top: 0; /* Reset top position */
+    width: 100%; /* Occupy full width */
+  }
+  
+  .flag-img{
+    height: 220px;
+    width: 320px;
+  }
+  .info{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 40px;
+  }
+}
 @media only screen and (max-width: 375px){
   .container{
     display: flex;

@@ -110,7 +110,13 @@ body::-webkit-scrollbar{
     font-size: 14px;
   }
   
-  
+  @media (max-width: 760px){
+    .country-list{
+      display: flex;
+      align-items: center; 
+      width: 375px;
+    }
+  }
   
   @media only screen and (max-width: 375px) {
     .country-list {
