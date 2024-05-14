@@ -94,24 +94,29 @@ function CountryPage() {
                 <p><span className="static-text">Population:</span> <span className="dynamic-content">{countryData.population}</span></p>
                 <p><span className="static-text">Region:</span> <span className="dynamic-content">{countryData.region}</span></p>
                 <p><span className="static-text">Capital:</span> <span className="dynamic-content">{countryData.capital}</span></p>
-                <p><span className="static-text">Native Name:</span> <span className="dynamic-content">{countryData.name.nativeName[Object.keys(countryData.name.nativeName)[0]].common}</span></p>
+                <p><span className="static-text">Native Name:</span> <span className="dynamic-content">
+  {countryData.name.nativeName ? 
+    countryData.name.nativeName[Object.keys(countryData.name.nativeName)[0]].common 
+    : ''}
+</span></p>
               </div>
               <div className='info-2'>
                 <p><span className="static-text">Top Level Domain:</span> <span className="dynamic-content">{countryData.tld[Object.keys(countryData.tld)[0]]}</span></p>
-                <p><span className="static-text">Currency:</span> <span className="dynamic-content">{Object.keys(countryData.currencies)[0]}</span></p>
-                <p><span className="static-text">Languages:</span> <span className="dynamic-content">{Object.values(countryData.languages).join(', ')}</span></p>
+                <p><span className="static-text">Currency:</span><span className="dynamic-content">{countryData.currencies ? Object.keys(countryData.currencies)[0] : 'No currency data available'}</span></p>
+                <p>
+  <span className="static-text">Languages:</span> <span className="dynamic-content">{countryData.languages ? Object.values(countryData.languages).join(', ') : 'No language data available'}</span></p>
               </div>
 
               <div className='borders-container'>
                 <p className='borders-title'>Borders Countries:</p>
                 <div className='borders-list'>
-                  {countryData.borders.map((border, index) => {
+                  {countryData.borders && countryData.borders.map((border, index) => {
                     const selectedCountry = allCountries.find(country => country.cca3 === border);
                     const newUrl = selectedCountry ? `/country/${selectedCountry.cca2}` : `/country/${border}`;
                     return (
                       <React.Fragment key={border}>
                         <Link to={newUrl} className='border-link'>
-                          {selectedCountry ? selectedCountry.name.common : border}
+                          {selectedCountry?.name?.common || border}
                         </Link>
                         {index < countryData.borders.length - 1 && ''}
                       </React.Fragment>
