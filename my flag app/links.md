@@ -1,2 +1,2 @@
 - [Github repository](https://github.com/callephille/myflagapp.git)
-- [Deployat projekt](https://callesflaggapp.netlify.app/)
+- [Deployat projekt](https://callesflaggor.netlify.app/)
