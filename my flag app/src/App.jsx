@@ -3,7 +3,7 @@ import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } 
 import HomePage, { allCountryLoader } from './HomePage';
 import CountryPage, { countryDetailLoader } from './CountryPage';
 import { ThemeProvider } from './ThemeContext'; // Import ThemeProvider from ThemeContext.jsx
-import RootElement from './RootElement';
+import RootElement from './RootElement';//
 
 const myRoutes = createRoutesFromElements(
   <Route path="/" element={<RootElement />}>
